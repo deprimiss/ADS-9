@@ -21,7 +21,7 @@ class BST {
         int hleft = getHeight(p->left);
         return 1 + std::max(hright, hleft);
     }
-    node<T>* insert(Node<T>* p, T k) {
+    Node<T>* insert(Node<T>* p, T k) {
         if (p == nullptr) {
             p = new Node<T>(k);
         } else if (p->key > k) {
