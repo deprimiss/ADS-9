@@ -4,39 +4,36 @@
 #include <algorithm>
 #include <string>
 template<typename T>
-struct Node {
+struct node {
     T key;
     Node* right, * left;
     int count;
-    explicit Node(T k) : key(k), count(1), left(nullptr), right(nullptr) {}
+    explicit node(T k) : key(k), count(1), left(nullptr), right(nullptr) {}
 };
 template<typename T>
 class BST {
-private:
-    Node<T>* tree;
-    int getHeight(Node<T>* p) {
+ private:
+    node<T>* tree;
+    int getHeight(node<T>* p) {
         if (p == nullptr)
             return 0;
         int hright = getHeight(p->right);
         int hleft = getHeight(p->left);
         return 1 + std::max(hright, hleft);
     }
-    Node<T>* insert(Node<T>* p, T k) {
+    node<T>* insert(node<T>* p, T k) {
         if (p == nullptr) {
-            p = new Node<T>(k);
-        }
-        else if (p->key > k) {
+            p = new node<T>(k);
+        } else if (p->key > k) {
             p->left = insert(p->left, k);
-        }
-        else if (p->key < k) {
+        } else if (p->key < k) {
             p->right = insert(p->right, k);
-        }
-        else {
+        } else {
             p->count++;
         }
         return p;
     }
-    int findVal(Node<T>* p, T k) {
+    int findVal(node<T>* p, T k) {
         if (p->key == k)
             return p->count;
         else if (p->key < k)
@@ -46,7 +43,7 @@ private:
         else
             return 0;
     }
-    void deleteTree(Node<T>* p) {
+    void deleteTree(node<T>* p) {
         if (p == nullptr)
             return;
         deleteTree(p->left);
@@ -55,7 +52,7 @@ private:
         p = nullptr;
     }
 
-public:
+ public:
     BST() : tree(nullptr) {}
     void insert(T k) {
         tree = insert(tree, k);
