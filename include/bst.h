@@ -64,7 +64,7 @@ public:
         return findVal(tree, k);
     }
     int depth() {
-        return getHeight(tree)--;
+        return getHeight(tree) - 1;
     }
     ~BST() {
         deleteTree(tree);
