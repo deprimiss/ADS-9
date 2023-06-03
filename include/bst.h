@@ -4,26 +4,26 @@
 #include <algorithm>
 #include <string>
 template<typename T>
-struct node {
+struct Node {
     T key;
     Node* right, * left;
     int count;
-    explicit node(T k) : key(k), count(1), left(nullptr), right(nullptr) {}
+    explicit Node(T k) : key(k), count(1), left(nullptr), right(nullptr) {}
 };
 template<typename T>
 class BST {
  private:
-    node<T>* tree;
-    int getHeight(node<T>* p) {
+    Node<T>* tree;
+    int getHeight(Node<T>* p) {
         if (p == nullptr)
             return 0;
         int hright = getHeight(p->right);
         int hleft = getHeight(p->left);
         return 1 + std::max(hright, hleft);
     }
-    node<T>* insert(node<T>* p, T k) {
+    node<T>* insert(Node<T>* p, T k) {
         if (p == nullptr) {
-            p = new node<T>(k);
+            p = new Node<T>(k);
         } else if (p->key > k) {
             p->left = insert(p->left, k);
         } else if (p->key < k) {
@@ -33,7 +33,7 @@ class BST {
         }
         return p;
     }
-    int findVal(node<T>* p, T k) {
+    int findVal(Node<T>* p, T k) {
         if (p->key == k)
             return p->count;
         else if (p->key < k)
@@ -43,7 +43,7 @@ class BST {
         else
             return 0;
     }
-    void deleteTree(node<T>* p) {
+    void deleteTree(Node<T>* p) {
         if (p == nullptr)
             return;
         deleteTree(p->left);
