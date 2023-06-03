@@ -15,8 +15,7 @@ BST<std::string> makeTree(const char* filename) {
             if (isalpha(ch) && ch != ' ') {
                     ch = tolower(ch);
                 w += ch;
-            }
-            else {
+            } else {
                 tree.insert(w);
                 w.clear();
             }
