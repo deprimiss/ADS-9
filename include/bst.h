@@ -19,7 +19,7 @@ private:
             return 0;
         int hright = getHeight(p->right);
         int hleft = getHeight(p->left);
-        return ++std::max(hright, hleft);
+        return 1 + std::max(hright, hleft);
     }
     Node<T>* insert(Node<T>* p, T k) {
         if (p == nullptr) {
