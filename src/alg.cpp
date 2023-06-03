@@ -13,7 +13,6 @@ BST<std::string> makeTree(const char* filename) {
         while (!file.eof()) {
             char ch = file.get();
             if (isalpha(ch) && ch != ' ') {
-                ch != ' '
                     ch = tolower(ch);
                 w += ch;
             }
