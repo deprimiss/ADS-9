@@ -21,7 +21,7 @@ BST<std::string> makeTree(const char* filename) {
             }
         }
     } else {
-        std::cout << "Error!" << std::endl;
+        std::cout << "error!" << std::endl;
     }
     file.close();
     return tree;
